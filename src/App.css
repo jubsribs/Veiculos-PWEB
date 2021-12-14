@@ -51,13 +51,9 @@
     width: 98%;
     height: 40px;
     border-radius: 5px;
+    margin: 10px;
 }
 
-.login-loginInputEmail svg{
-
-    margin-left: 10px;
-    font-size: 25px;
-}
 
 .login-loginInputEmail input{
     background: transparent;
