@@ -1,15 +1,8 @@
 import './App.css';
-import {Formik, Form, Field, ErrorMessage, yupToFormErrors} from "formik";
-import * as yup from "yup";
 
 function App() {
 
   const handleClickLogin = (values)=> console.log(values);
-  
-  const validationLogin = yup.object().shape({
-    email: yup.string().email("Não é um email").required("Campo Obrigatório"),
-    password: yup.string().min(8,"A senha deve conter 8 caracteres").required("Campo Obrigatório"),
-  });
 
 
   return (
