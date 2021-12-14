@@ -2,8 +2,6 @@ import './App.css';
 
 function App() {
 
-  const handleClickLogin = (values)=> console.log(values);
-
 
   return (
     <div className="login">
