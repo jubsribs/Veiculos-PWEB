@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="login">
     <div className ="login-logo">
-      <img src= "http://capposeguros.com.br/wp-content/uploads/2014/01/Pack_veiculos_sombra.png" 
+      <img src= "https://estrelalocadoramg.com.br/wp-content/uploads/2019/03/frota-2.png" 
       alt= "Login App" 
       />
     </div>
