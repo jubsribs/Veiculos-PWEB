@@ -20,7 +20,7 @@ function frcadastrar() {
 
     <form onSubmit = {handleSubmit}>
                 <h1>
-                    Cadastrar Cliente
+                    Cadastrar Fornecedor
                 </h1>
 
                 <h1>
