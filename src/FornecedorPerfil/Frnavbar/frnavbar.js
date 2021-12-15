@@ -1,6 +1,6 @@
 import './frnavbar.css';
 
-const frnavbar = (frsidebarOpen, fropenSidebar) =>{
+const frnavbar = (sidebarOpen, openSidebar) =>{
     return(
         <nav className = "frnavbar">
             
