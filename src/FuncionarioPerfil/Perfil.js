@@ -4,7 +4,7 @@ const Perfil = () => {
     const fopenSidebar = () =>{
         setfSidebarOpen(true);
     };
-    const closeSidebar = () =>{
+    const fcloseSidebar = () =>{
         setfSidebarOpen(false);
     };
 
