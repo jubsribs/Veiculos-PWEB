@@ -42,21 +42,12 @@
                                     </div>
                                     
                                 <div className = "charts">
-                                <div className = "charts__left">
-                                <div className = "charts__left__title">
-                                <div>
-                                    <h1> Daily Report </h1>
-                                    <p> Salvador</p>
-                                </div>
-                                <i className = "fa fa-used"></i>
-                                </div>
-                                <chart />
-                                </div>
+                             
 
                                 <div className = "charts__right">
                                 <div className = "charts__right__title">
                                 <div>
-                                    <h1> Daily Report </h1>
+                                    <h1> Atualizações </h1>
                                     <p> Salvador</p>
                                 </div>
                                 <i className = "fa fa-area-chart"></i>
