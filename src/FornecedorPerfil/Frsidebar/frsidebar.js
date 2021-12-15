@@ -1,13 +1,13 @@
-const frsidebar = ({frsidebarOpen} ,frcloseSidebar) => {
+const frsidebar = ({sidebarOpen} ,closeSidebar) => {
     return(
-        <div className= {frsidebarOpen ? "frsidebar-responsive": "" }id="frsidebar">
+        <div className= {sidebarOpen ? "frsidebar-responsive": "" }id="frsidebar">
             <div className="frsidebar__title">
                 <div className = "frsidebar_img">
                     <h1> Locação Veículos </h1>
                 </div>
 
                 <i 
-                onClick ={() => frcloseSidebar()}
+                onClick ={() => closeSidebar()}
                 className ="fa fa-times"
                 id = "frsidebarIcon"
                 aria-hidden ="true"
