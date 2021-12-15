@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL = 'http://localhost:8085'
+    baseURL: 'http://localhost:8085'
 })
 
 const registro = (path, data) => {
@@ -75,6 +75,13 @@ const enviarParaManutencao = idVeiculo => {
     return api.post('/entrega', { 'id': idVeiculo })
 }
 
+const VerVeiculosDisponiveis = idEmpresa => {
+    return [
+        { 'nome': 'ford ka', 'disponibilidade': true, 'valor': 'R$ 100.00', 'categoria': 'Familiar' },
+    ]
+    return api.get(`veiculos/${idEmpresa}`)
+}
+
 const verLocacoes = nomeEmpresa => {
     return api.get(`locacoes/${nomeEmpresa}`)
 }
@@ -105,6 +112,7 @@ export default {
     registro,
     login,
     mostrarTiposSeguro,
+    VerVeiculosDisponiveis,
     reservarVeiculo,
     verClientes,
     mostrarReservasPreAprovadas,
