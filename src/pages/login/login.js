@@ -1,9 +1,41 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useRoutes } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
 import './login.css';
+import apiService from "../../services/apiService.js"
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 
 function Login() {
-    const handleClickLogin = (values) => console.log(values);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    let nextRoute = '/adminClient'
+    const navigate = useNavigate()
+
+    const HandleClickLogin = () => {
+        apiService.login({
+            'login': email,
+            'senha': password
+        }).then(response => {
+            let resposta = response
+
+            // if (resposta.status == 200) {
+            //     if (resposta.perfil == 'cliente') {
+            //         nextRoute = '/adminCliente'
+            //     } else if (resposta.perfil == 'fornecedor') {
+            //         nextRoute = '/adminFornecedor'
+            //     } else nextRoute = '/adminFuncionario'
+            // } else console.log('Erro interno')
+
+            navigate(nextRoute, { replace: false })
+        }).catch(e => {
+            console.log(e)
+        })
+
+
+    }
+
     return (
         <div className="login">
             <div className="login-logo">
@@ -15,30 +47,29 @@ function Login() {
             <div className="login-right">
                 <h1>Acessar Locadora</h1>
 
-                <div className="login-loginInputEmail">
-                    <input
-                        type="text"
-                        placeholder="Digite um email"
-                    />
-                </div>
+                <form onSubmit={HandleClickLogin}>
+                    <Form.Group className="login-loginInputEmail" controlId="email">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control
+                            autoFocus
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </Form.Group>
 
+                    <Form.Group controlId="password" className="login-loginInputPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Button block size="lg" type="submit">Entrar</Button>
+                </form>
 
-                <div className="login-loginInputPassword">
-                    <input
-                        type="text"
-                        placeholder="Digite sua senha"
-                    />
-                </div>
-
-                <button type="submit">
-                    Entrar
-                </button>
                 <h4> Não Possuo Conta</h4>
-                <Link to="/adminCliente/reservar"> Cadastrar </Link>
-                <button type="submit">
-                    Cadastrar
-                </button>
-
+                <Link className='link' to="/toCadastro"> Cadastrar </Link>
             </div>
         </div>
     );

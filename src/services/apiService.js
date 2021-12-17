@@ -8,8 +8,24 @@ const registro = (path, data) => {
     return api.post(path, data)
 }
 
-const login = (data) => {
-    return api.post('/login', data)
+const login = async (data) => {
+    if (data['email'] == 'funcionario@email.com') {
+        return {
+            'nome': 'gonsales',
+            'categoria': 'funcionario',
+            'status': 200
+        }
+    } else if (data['email'] == 'fornecedor@email.com') {
+        return {
+            'nome': 'gonsales',
+            'categoria': 'fornecedor',
+            'status': 200
+        }
+    } else return {
+        'nome': 'gonsales',
+        'categoria': 'cliente',
+        'status': 200
+    }
 }
 
 /**
@@ -27,6 +43,10 @@ const aprovarRegistro = (idCliente, aprovado) => {
         'id': idCliente,
         'aprovado': aprovado
     })
+}
+
+const aprovarReserva = (idReserva, status) => {
+    return api.post('/aprovarReserva', { 'id': idReserva, 'status': status })
 }
 
 /**
@@ -49,7 +69,7 @@ const mostrarTiposSeguro = nomeEmpresa => {
  * e	período de	locação.
  */
 const reservarVeiculo = (path, data) => {
-    return api.post(path, data)
+    return api.post('/reservar', data)
 }
 
 /**
@@ -59,7 +79,7 @@ const reservarVeiculo = (path, data) => {
  * empresa	 com	 o	 uso	 de	 um	 checklist	fornecido	pelo	sistema
  */
 const entregarVeiculo = data => {
-    return api.post('/entrega', data)
+    return api.post('/entregar', data)
 }
 
 
@@ -71,15 +91,28 @@ const entregarVeiculo = data => {
  * à empresa	e	as	informações decorrentes	de	uso,	como
  * uilometragem,	deverão ser	atualizadas.
  */
-const enviarParaManutencao = idVeiculo => {
-    return api.post('/entrega', { 'id': idVeiculo })
+const EnviarParaManutencao = idVeiculo => {
+    return api.post('/paramanutencao', { 'id': idVeiculo })
 }
 
-const VerVeiculosDisponiveis = idEmpresa => {
-    return [
-        { 'nome': 'ford ka', 'disponibilidade': true, 'valor': 'R$ 100.00', 'categoria': 'Familiar' },
-    ]
-    return api.get(`veiculos/${idEmpresa}`)
+const VerVeiculosDisponiveis = async _ => {
+    // return [
+    //     { 'nome': 'ford ka', 'disponibilidade': true, 'valor': 'R$ 100.00', 'categoria': 'Familiar' },
+    // ]
+    return [{ 'veiculo': 'ford fiesta', 'disponibilidade': true, 'valor': 100, 'categoria': 'passeio' }]
+    return api.get('/veiculos')
+}
+
+const getReservadoPorCliente = idCliente => {
+    return api.get(`reservas/cliente/${idCliente}`)
+}
+
+const getVeiculosPorEmpresa = idEmpresa => {
+    return api.get(`empresa/veiculos/${idEmpresa}`)
+}
+
+const getReservas = idEmpresa => {
+    return api.get(`reservas/cliente/${idEmpresa}`)
 }
 
 const verLocacoes = nomeEmpresa => {
@@ -114,10 +147,14 @@ export default {
     mostrarTiposSeguro,
     VerVeiculosDisponiveis,
     reservarVeiculo,
+    getReservadoPorCliente,
+    getVeiculosPorEmpresa,
+    getReservas,
     verClientes,
     mostrarReservasPreAprovadas,
     aprovarRegistro,
     entregarVeiculo,
-    enviarParaManutencao
+    EnviarParaManutencao,
+    aprovarReserva
 }
 
