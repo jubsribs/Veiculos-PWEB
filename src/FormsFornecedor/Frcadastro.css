@@ -1,0 +1,23 @@
+
+body {
+  display: flex;
+  width: 100vw;
+  position: relative;
+  flex-flow: column wrap;
+  align-items: center;
+  background-color:seashell;
+}
+
+
+h1{
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+
+}
+
+input{
+  align-items: center;
+  text-align: center;
+  }
+
