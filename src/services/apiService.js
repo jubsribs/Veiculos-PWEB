@@ -1,31 +1,26 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8085'
+    baseURL: 'http://localhost:8000'
 })
 
-const registro = (path, data) => {
+const registro = async (path, data) => {
     return api.post(path, data)
 }
 
 const login = async (data) => {
-    if (data['email'] == 'funcionario@email.com') {
-        return {
-            'nome': 'gonsales',
-            'categoria': 'funcionario',
-            'status': 200
-        }
-    } else if (data['email'] == 'fornecedor@email.com') {
-        return {
-            'nome': 'gonsales',
-            'categoria': 'fornecedor',
-            'status': 200
-        }
-    } else return {
-        'nome': 'gonsales',
-        'categoria': 'cliente',
-        'status': 200
-    }
+    let user = {}
+    return api.get('/usuarios')
+        .then(response => {
+            if (response.status == 200) {
+                response.data.forEach(item => {
+                    if (item['email'] == data['email'] && item['password'] == data['password'])
+                        user = item
+                })
+            }
+        }).catch(_ => {
+            alert('falha')
+        })
 }
 
 /**
@@ -34,7 +29,7 @@ const login = async (data) => {
  * seu	cadastro	no	sistema	aprovado	
  * pelos	critérios estabelecidos	pela	empresa
  */
-const verClientes = nomeEmpresa => {
+const verClientes = async nomeEmpresa => {
     return api.get(`clientes/${nomeEmpresa}`)
 }
 

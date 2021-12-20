@@ -10,7 +10,7 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    let nextRoute = '/adminClient'
+    let nextRoute = ''
     const navigate = useNavigate()
 
     const HandleClickLogin = () => {
@@ -20,13 +20,14 @@ function Login() {
         }).then(response => {
             let resposta = response
 
-            // if (resposta.status == 200) {
-            //     if (resposta.perfil == 'cliente') {
-            //         nextRoute = '/adminCliente'
-            //     } else if (resposta.perfil == 'fornecedor') {
-            //         nextRoute = '/adminFornecedor'
-            //     } else nextRoute = '/adminFuncionario'
-            // } else console.log('Erro interno')
+            if (resposta != {}) {
+                if (resposta.role == 'cliente') {
+                    nextRoute = '/adminCliente'
+                } else if (resposta.role == 'fornecedor') {
+                    nextRoute = '/adminFornecedor'
+                } else nextRoute = '/adminFuncionario'
+            }
+
 
             navigate(nextRoute, { replace: false })
         }).catch(e => {

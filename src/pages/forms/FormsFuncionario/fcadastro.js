@@ -1,19 +1,29 @@
 import { useState } from 'react';
 import './fcadastro.css';
+import { useNavigate } from 'react-router-dom';
+import apiService from '../../../services/apiService';
 
 function CadastroFuncionario() {
-
+    const navigate = useNavigate()
     const [formValues, setFormValues] = useState({});
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
+        const data = formValues[name] || {}
+
+        setFormValues({ ...formValues });
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        apiService.registro('/', formValues).
+            then(response => {
+                if (response.status == 200) {
+                    navigate('/login', { replace: false })
+                } else alert('Falha no cadastro')
+            }).catch(e => {
+                alert('Falha no cadastro')
+            })
     };
-
-
 
     return (
 

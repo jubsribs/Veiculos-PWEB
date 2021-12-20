@@ -5,11 +5,11 @@ import { useParams } from 'react-router-dom'
 import TabelaAlugarVeiculos from '../../../shared/veiculos/tabelaVeiculos'
 
 function AprovaLocacoes() {
-    const { action } = useParams()
+    const action = { 'requestParams': 'funcionario_emprestimo_reserva' }
 
     return (
         <div>
-            <h1>Aprovar Locação de Veículos</h1>
+            <h1>Aprove ou reprove a Locação de Veículos</h1>
             <TabelaAlugarVeiculos direction={action} />
         </div>
     )

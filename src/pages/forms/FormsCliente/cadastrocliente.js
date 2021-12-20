@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import apiService from '../../../services/apiService';
 import './cadastrar.css';
 function CadastroCliente() {
 
+  const navigate = useNavigate()
   const [formValues, setFormValues] = useState({});
 
   const handleInputChange = (e) => {
@@ -9,6 +12,7 @@ function CadastroCliente() {
     const isCheckbox = type === 'checkbox';
 
     const data = formValues[name] || {}
+
     if (isCheckbox) {
       data[value] = checked;
     }
@@ -18,14 +22,19 @@ function CadastroCliente() {
   };
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
+    apiService.registro('/', formValues).
+      then(response => {
+        if (response.status == 200) {
+          navigate('/login', { replace: false })
+        } else alert('Falha no cadastro')
+      }).catch(_ => {
+        alert('Falha no cadastro')
+      })
   };
 
 
   return (
-
-
     <form onSubmit={handleSubmit}>
       <h1>
         Cadastrar Cliente

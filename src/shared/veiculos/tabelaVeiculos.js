@@ -12,14 +12,15 @@ function TabelaAlugarVeiculos(actions) {
     const [currentIndex, setCurrentIndex] = useState(-1)
 
     useEffect(() => {
-        switch (dir) {
+        console.log(actions)
+        switch (dir['requestParam']) {
             //para cliente pegar veiculo
             case "reservar":
                 getVeiculosDisponiveis()
                 break;
             // para cliente devolver veiculo
-            case "devolver":
-                getMeusAlugados(actions['idCliente'])
+            case "devolver" || "historico":
+                getMeusAlugados(actions['idCliente'], actions['requestParam'])
                 break;
             // para fornecedor ver veiculos fornecidos
             case "verVeiculosFornecedor":
@@ -52,12 +53,15 @@ function TabelaAlugarVeiculos(actions) {
             })
     }
 
-    const getMeusAlugados = (idCliente) => {
+    const getMeusAlugados = (idCliente, requestParam) => {
         apiService.getReservadoPorCliente(idCliente)
             .then(response => {
-                console.log(response.data)
                 setVeiculos(null)
-                setVeiculos(response.data)
+
+                if (requestParam === 'historico') {
+                    let filtered = response.data.filter((item) => item['status'] === 'entregue')
+                    setVeiculos(filtered)
+                } else setVeiculos(response.data)
             }).catch(e => {
                 console.log(e)
             })
@@ -159,7 +163,7 @@ function TabelaAlugarVeiculos(actions) {
             }).catch(e => { console.log('Erro interno') })
     }
 
-    switch (dir) {
+    switch (dir['requestParam']) {
         case "funcionario_emprestimo_reserva":
             // buildar tabela para funcionario aprovar emprestimo
             return (
@@ -223,10 +227,7 @@ function TabelaAlugarVeiculos(actions) {
             // buildar tabela para cliente alugar veiculo
             return (
                 <div>
-                    <h1> Veiculos disponiveis para reserva </h1>
                     <table>
-
-
                         <tbody>
                             <tr>
                                 <th>Veiculo</th>
@@ -247,7 +248,6 @@ function TabelaAlugarVeiculos(actions) {
                                             <td><button onClick={reservarVeiculo(veiculo)}> Reservar </button></td>
                                         </tr>
                                     )
-
                                 })}
                         </tbody>
 
@@ -255,7 +255,7 @@ function TabelaAlugarVeiculos(actions) {
                 </div>
             )
 
-        case "entregar":
+        case "devolver":
             return (
                 <div>
                     <h1> Seus veículos para entregar </h1>

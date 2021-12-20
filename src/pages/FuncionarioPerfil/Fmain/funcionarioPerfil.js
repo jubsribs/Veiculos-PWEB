@@ -1,5 +1,7 @@
 import fcharts from '../Fcharts/fcharts';
 import './funcionarioPerfil.css';
+import { Link, useNavigate, useRoutes } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
 
 const FuncionarioPerfil = () => {
     return (
@@ -16,11 +18,8 @@ const FuncionarioPerfil = () => {
 
                 <div className="fmain__cards">
                     <div className="fcard">
-                        <i className=" fa fa-file-text fa-2x text-lightblue"></i>
                         <div className="fcard_inner">
-                            <p className="text-primary-p">
-                                Permissões de acesso
-                            </p>
+                            Permissões de acesso
                             <span className="font-bold text-title">
                                 10
                             </span>
@@ -29,7 +28,6 @@ const FuncionarioPerfil = () => {
 
 
                     <div className="fcard">
-                        <i className=" fa fa-money fa-2x text-red"></i>
                         <div className="fcard_inner">
                             <p className="text-primary-p">
                                 Permissão Locações
@@ -42,7 +40,6 @@ const FuncionarioPerfil = () => {
 
 
                     <div className="fcard">
-                        <i className=" fa fa-money fa-2x text-yellow"></i>
                         <div className="fcard_inner">
                             <p className="text-primary-p">
                                 CheckList para Devoluções
@@ -53,10 +50,15 @@ const FuncionarioPerfil = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
 
-        </main>
+            <Link to="/aprovaClientes">Aprovar novos cadastros</Link>
+            <Link to="/aprovaLocacoes/:aprova">Aprovar Locações</Link>
+            <Link to="/aprovaLocacoes/:reprova">Reprovar Locações</Link>
+            <Link to="/checklistAprovacao">Aprovar/Reprovar Devoluções</Link>
+            <Link to="/cadastrarVeiculo">Cadastrar Veículo</Link>
+
+        </main >
     )
 };
 export default FuncionarioPerfil;

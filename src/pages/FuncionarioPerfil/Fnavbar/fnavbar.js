@@ -1,6 +1,6 @@
 import './fnavbar.css';
 
-const fnavbar = (fsidebarOpen, fopenSidebar) =>{
+const fnavbar = (sidebarOpen, openSidebar) =>{
     return(
         <nav className = "fnavbar">
             
@@ -10,13 +10,7 @@ const fnavbar = (fsidebarOpen, fopenSidebar) =>{
                 <a href="#" className ="activate_link"> Checklist</a>
             </div>
             <div className = "fnavbar__right">
-                <a href="#"> 
-                <i className = "fa fa-search"></i>
-                </a>
-
-                <a href="#"> 
-                <i className = "fa fa-clock-o"></i>
-                </a>
+               
 
 
             </div>

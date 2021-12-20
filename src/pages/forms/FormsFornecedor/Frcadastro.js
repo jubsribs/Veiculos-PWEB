@@ -1,23 +1,32 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import apiService from '../../../services/apiService';
 import './Frcadastro.css';
 
 function CadastroFornecedor() {
+    const navigate = useNavigate()
 
     const [formValues, setFormValues] = useState({});
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
+        const data = formValues[name] || {}
+
+        setFormValues({ ...formValues });
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = () => {
+        apiService.registro('/', formValues).
+            then(response => {
+                if (response.status == 200) {
+                    navigate('/login', { replace: false })
+                } else alert('Falha no cadastro')
+            }).catch(e => {
+                alert('Falha no cadastro')
+            })
     };
 
-
-
     return (
-
-
         <form onSubmit={handleSubmit}>
             <h1>
                 Cadastrar Fornecedor

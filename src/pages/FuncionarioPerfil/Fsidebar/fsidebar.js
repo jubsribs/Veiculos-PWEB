@@ -1,14 +1,11 @@
-const fsidebar = ({fsidebarOpen} ,fcloseSidebar) => {
+const fsidebar = ({sidebarOpen} ,closeSidebar) => {
     return(
-        <div className= { fsidebarOpen ? "fsidebar-responsive": "" }id="fsidebar">
+        <div className= {sidebarOpen ? "fsidebar-responsive": "" }id="fsidebar">
             <div className="fsidebar__title">
-                <div className = "fsidebar_img">
                     <h1> Locação Veículos </h1>
-                </div>
 
                 <i 
-                onClick ={() => fcloseSidebar()}
-                className ="fa fa-times"
+                onClick ={() => closeSidebar()}
                 id = "fsidebarIcon"
                 aria-hidden ="true"
                 ></i>
@@ -17,8 +14,6 @@ const fsidebar = ({fsidebarOpen} ,fcloseSidebar) => {
     
             <div className ="fsidebar_menu">
                 <div className = "fsidebar__link factive_menu_link">
-                    <i className = "fa fa-minus-square">  
-                    </i>
                         <a href = "#">
                             Home
                         </a>
@@ -29,10 +24,8 @@ const fsidebar = ({fsidebarOpen} ,fcloseSidebar) => {
                 Permissão Locações
                 </h2>
                 <div className = "fsidebar__link">
-                <i className = "fa fa-tachometer">  
-                    </i>
                         <a href = "#">
-                            Permissão
+                            Permissão Locação
                         </a>
                 </div>
 
@@ -40,10 +33,8 @@ const fsidebar = ({fsidebarOpen} ,fcloseSidebar) => {
                      Permissões de acesso
                 </h2>
                 <div className = "fsidebar__link">
-                <i className = "fa fa-archive">  
-                    </i>
                         <a href = "#">
-                            Permissão
+                            Permissão Acesso
                         </a>
                 </div>
 
@@ -51,8 +42,6 @@ const fsidebar = ({fsidebarOpen} ,fcloseSidebar) => {
                 CheckList para Devoluções
                 </h2>
                 <div className = "fsidebar__link">
-                <i className = "fa fa-tasks">  
-                    </i>
                         <a href = "#">
                             CheckList
                         </a>
@@ -61,16 +50,12 @@ const fsidebar = ({fsidebarOpen} ,fcloseSidebar) => {
 
 
                 <div className = "fsidebar__link">
-                <i className = "fa fa-file-text">  
-                    </i>
                         <a href = "#">
                             Política de Privacidade
                         </a>
                 </div>
 
                 <div className = "fsidebar__log out">
-                <i className = "fa fa-power-off">  
-                    </i>
                         <a href = "#">
                             Log out
                         </a>

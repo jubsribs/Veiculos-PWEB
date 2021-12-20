@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import apiService from "../../services/apiService.js"
 
 
 function TabelaClientes(actions) {
+    const navigate = useNavigate()
     const dir = actions['direction']
     const [clientes, setClientes] = useState([])
 
@@ -18,6 +19,15 @@ function TabelaClientes(actions) {
             }).catch(e => {
                 console.log(e)
             })
+    }
+
+    const aprovarClientes = (clienteId, aprovado) => {
+        apiService.aprovarRegistro(clienteId, aprovado)
+            .then(() => {
+                alert('Sucesso')
+                navigate('/adminFuncionario', { replace: true })
+            })
+            .catch(_ => alert('Falha'))
     }
 
     switch (dir) {
@@ -43,8 +53,8 @@ function TabelaClientes(actions) {
                                             <td>{cliente.cnh}</td>
                                             <td>{cliente.rg}</td>
                                             <td>{cliente.cpf}</td>
-                                            <td><button onClick={apiService.aprovarRegistro(cliente.id, true)}> Aprovar </button></td>
-                                            <td><button onClick={apiService.aprovarRegistro(cliente.id, false)}> Reprovar </button></td>
+                                            <td><button onClick={aprovarClientes(cliente.id, true)}> Aprovar </button></td>
+                                            <td><button onClick={aprovarClientes(cliente.id, false)}> Reprovar </button></td>
                                         </tr>
                                     )
 

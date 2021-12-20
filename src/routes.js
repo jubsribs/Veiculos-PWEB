@@ -17,6 +17,7 @@ import CadastroCliente from "./pages/forms/FormsCliente/cadastrocliente";
 import AlugarVeiculoCliente from "./pages/adminCliente/alugarVeiculoCliente";
 import DevolverVeiculoCliente from "./pages/adminCliente/devolverVeiculoClient";
 import HistoricoVeiculoClientes from "./pages/adminCliente/historicoVeiculoClientes";
+import CheckListDevolucao from "./pages/adminFuncionario/checklistDevolucao/checklistDevolucao";
 
 
 const Rotas = () => {
@@ -25,7 +26,7 @@ const Rotas = () => {
             <Routes>
                 //rotas gerais
                 <Route path="/" element={<Login />} />
-                <Route path="/adminClient" element={<ClientePerfil />} />
+                <Route path="/adminCliente" element={<ClientePerfil />} />
                 <Route path="/adminFornecedor" element={<FornecedorPerfil />} />
                 <Route path="/adminFuncionario" element={<FuncionarioPerfil />} />
                 <Route path="/toCadastro" element={<Plogin />} />
@@ -36,20 +37,19 @@ const Rotas = () => {
                 <Route path="/cadastroFuncionario" element={<CadastroFuncionario />} />
 
                 //cliente rotas
-                <Route path="/toAlugarVeiculo/:action" element={<AlugarVeiculoCliente />} />
-                <Route path="/toDevolverVeiculo/:action" element={<DevolverVeiculoCliente />} />
-                <Route path="/toHistoricoVeiculo/:action" element={<HistoricoVeiculoClientes />} />
+                <Route path="/toAlugarVeiculo/:param" element={<AlugarVeiculoCliente />} />
+                <Route path="/toDevolverVeiculo/:param" element={<DevolverVeiculoCliente />} />
+                <Route path="/toHistoricoVeiculo/:param" element={<HistoricoVeiculoClientes />} />
 
                 //fornecedor rotas
                 //action para cadastrar : cadastro / update
-                <Route path="/cadastrarVeiculo/:action" element={<CadastrarVeiculo />} />
                 <Route path="/gerenciarVeiculos" element={<GerenciarVeiculo />} />
 
                 //funcionario rotas
                 <Route path="/aprovaLocacoes" element={<AprovaLocacoes />} />
                 <Route path="/aprovaClientes" element={<AprovaClientes />} />
-
-
+                <Route path="/cadastrarVeiculo" element={<CadastrarVeiculo />} />
+                <Route path="/checklistAprovacao" element={<CheckListDevolucao />} />
             </Routes>
         </BrowserRouter>
     )

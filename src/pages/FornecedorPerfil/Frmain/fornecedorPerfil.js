@@ -28,9 +28,7 @@ const FornecedorPerfil = () => {
                     </div>
 
                 </div>
-
             </div>
-
         </main>
     )
 };

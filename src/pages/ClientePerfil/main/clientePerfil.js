@@ -66,7 +66,7 @@ const ClientePerfil = () => {
             </div>
 
             <div>
-                <Link to='/gerenciarCliente/reservar'> Reservar </Link>
+                <Link to='/toAlugarVeiculo/:123456'> Reservar </Link>
             </div>
 
         </main>

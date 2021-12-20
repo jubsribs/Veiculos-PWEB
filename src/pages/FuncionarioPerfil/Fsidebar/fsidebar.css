@@ -17,19 +17,15 @@
 
 
 .fsidebar__title > div > h1{
-font-size: 18px;
+font-size: 1rem;
 display: inline;
 margin-left: 15px;
 }
 
-.fsidebar__title > i{
-    font-size: 18px;
-    display: none;
-}
 
 .fsidebar_menu > h2{
     color: #3ea175;
-    font-size: 16px;
+    font-size: 1rem;
     margin-top: 15px;
     margin-bottom: 5px;
     padding: 0 10px;
@@ -64,11 +60,6 @@ margin-left: 15px;
     border-radius: 3px;
 }
 
-.fsidebar__link > i{
-    margin-right: 10px;
-    font-size: 18px;
-}
-
 .sidebar__logout{
     margin-top: 20px;
     padding: 10px;
@@ -82,10 +73,6 @@ margin-left: 15px;
     text-transform: uppercase;
 }
 
-.fsidebar__logout > i{
-    margin-right: 10px;
-    font-size: 18px;
-}
 
 .fsidebar-responsive{
     display: inline !important;
@@ -97,8 +84,5 @@ margin-left: 15px;
 @media only screen and (max-width: 978px){
     #fsidebar{
         display: none;
-    }
-    .fsidebar__title > i{
-        display: inline;
     }
 }
