@@ -36,7 +36,7 @@ function frcadastrar() {
                 </h1>
          <input type="text" name="endereço" placeholder="ENDEREÇO" onChange = {handleInputChange}  value = {formValues.endereço || ''} />
                 <h1>
-                    Ciade
+                    Cidade
                 </h1>
          <input type="text" name="cidade" placeholder="Cidade" onChange = {handleInputChange}  value = {formValues.cidade || ''} />
                 <h1>
